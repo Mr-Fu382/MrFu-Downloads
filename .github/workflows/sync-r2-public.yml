@@ -1,0 +1,113 @@
+name: 自动同步R2公开桶并生成项目列表
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小时自动跑一次
+  workflow_dispatch: # 允许随时手动触发
+
+permissions:
+  contents: write
+
+jobs:
+  update-public-downloads:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装 rclone
+        run: curl https://rclone.org/install.sh | sudo bash
+
+      - name: 配置 R2 连接
+        env:
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+        run: |
+          mkdir -p ~/.config/rclone
+          cat <<EOF > ~/.config/rclone/rclone.conf
+          [r2]
+          type = s3
+          provider = Cloudflare
+          access_key_id = $R2_ACCESS_KEY_ID
+          secret_access_key = $R2_SECRET_ACCESS_KEY
+          endpoint = $R2_ENDPOINT
+          EOF
+
+      - name: 按项目生成独立的下载列表并更新首页导航
+        run: |
+          # 1. 获取 R2 公开桶里的所有文件列表
+          rclone lsf r2:public-assets --recursive > all_files.txt
+          
+          # 2. 提取所有第一层项目文件夹名字（去重）
+          awk -F/ '{print $1}' all_files.txt | sort -u > projects.txt
+          
+          BASE_URL="https://github-download.1253510.com/"
+          
+          # 3. 生成根目录的 README.md（纯净版，无配置文件干扰）
+          echo "# 公开资产下载中心" > README.md
+          echo "" >> README.md
+          echo "欢迎来到我的公开资源库。实际文件存放于 Cloudflare R2，提供全球 CDN 加速。" >> README.md
+          echo "" >> README.md
+          echo "## 📂 项目导航" >> README.md
+          echo "" >> README.md
+          
+          # 遍历项目，生成导航链接以及对应的项目内部文档
+          while read -r proj; do
+            [ -z "$proj" ] && continue
+            
+            # 排除根目录的散文件，统一归入“其他”
+            if [[ "$proj" == *.* ]]; then
+               proj="其他"
+            fi
+            
+            # 将项目名字写入根目录的 README
+            # 如果文件夹名字含空格，将空格替换为 %20 保证链接正常
+            proj_encoded=$(echo "$proj" | sed 's/ /%20/g')
+            echo "- [$proj](./$proj_encoded/下载列表.md)" >> README.md
+            
+            # 创建项目文件夹及内部的 下载列表.md
+            md_file="$proj/下载列表.md"
+            mkdir -p "$proj"
+            
+            echo "# $proj 下载列表" > "$md_file"
+            echo "" >> "$md_file"
+            echo "> 最后同步时间: $(date '+%Y-%m-%d %H:%M:%S')" >> "$md_file"
+            echo "" >> "$md_file"
+            echo "| 文件路径 | 下载链接 |" >> "$md_file"
+            echo "| :--- | :--- |" >> "$md_file"
+            
+          done < projects.txt
+          
+          # 4. 二次遍历所有文件，填入对应项目的表格中（无反引号，纯文本显示）
+          while read -r file; do
+            [ -z "$file" ] && continue
+            
+            if [[ "$file" == */* ]]; then
+              proj=$(echo "$file" | cut -d'/' -f1)
+            else
+              proj="其他"
+            fi
+            
+            # 文件路径里的空格替换为 %20
+            encoded_file=$(echo "$file" | sed 's/ /%20/g')
+            
+            # 写入到对应项目的 下载列表.md
+            echo "| $file | [点击下载]($BASE_URL$encoded_file) |" >> "$proj/下载列表.md"
+            
+          done < all_files.txt
+          
+          # 清理临时文件
+          rm -f all_files.txt projects.txt
+
+      - name: 自动提交到 GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if git diff --staged --quiet; then
+            echo "无变化，跳过提交。"
+          else
+            git commit -m "自动同步 R2 并更新各项目下载列表"
+            git push
+          fi
