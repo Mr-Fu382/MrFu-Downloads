@@ -1,0 +1,17 @@
+# 忽略所有文件
+*
+
+# 但保留目录（不然没法读取子目录）
+!*/
+
+# 只放行以下几类索引/链接相关的文本文件
+!*.md
+!*.json
+!*.txt
+!*.yml
+!*.yaml
+!README.md
+!LICENSE
+
+# 放行 .gitignore 自己
+!.gitignore
