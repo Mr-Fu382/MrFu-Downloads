@@ -15,3 +15,5 @@
 
 # 放行 .gitignore 自己
 !.gitignore
+all_files.txt
+process.py
