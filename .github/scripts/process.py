@@ -6,9 +6,9 @@ from collections import defaultdict
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
 GITHUB_REPO_URL = "https://github.com/Mr-Fu382/public-assets"
 
-CONTACT_WECHAT = "15976948117，Yq13926922459"     # 例如: MrFu382
-CONTACT_QQ = "3628270735"           # 例如: 12345678
-CONTACT_EMAIL = "3628270735@qq.com"        # 例如: xxx@qq.com
+CONTACT_WECHAT = "15976948117; Yq13926922459"
+CONTACT_QQ = "3628270735"
+CONTACT_EMAIL = "3628270735@qq.com"
 # ==================================================================
 
 ARCHIVE_EXTS = (
@@ -18,19 +18,20 @@ ARCHIVE_EXTS = (
 )
 
 def generate_contact_md():
-    """生成通用的联系方式和反馈部分"""
-    return f"""### 💬 反馈与联系方式
+    """生成中英双语的反馈与联系方式"""
+    return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
-**遇到问题？需要帮助？**
-- 🐞 **提交工单**: [点击前往 GitHub 议题 (Issues)]({GITHUB_REPO_URL}/issues) *(推荐，方便追踪)*
-- 💡 **交流讨论**: [点击前往 GitHub 讨论 (Discussions)]({GITHUB_REPO_URL}/discussions) *(分享心得)*
+**遇到问题？需要帮助？(Need help?)**
+- 🐞 **提交工单 (Submit Issue)**: [点击前往 GitHub 议题 (Issues)]({GITHUB_REPO_URL}/issues) *(推荐，方便追踪 / Recommended)*
+- 💡 **交流讨论 (Discussions)**: [点击前往 GitHub 讨论 (Discussions)]({GITHUB_REPO_URL}/discussions) *(分享心得 / Share ideas)*
 
-**直接联系作者：**
-- 💬 **微信**: `{CONTACT_WECHAT}`
+**直接联系作者 (Contact Author)：**
+- 💬 **微信 (WeChat)**: `{CONTACT_WECHAT}`
 - 🐧 **QQ**: `{CONTACT_QQ}`
-- 📧 **邮箱**: `{CONTACT_EMAIL}`
+- 📧 **邮箱 (Email)**: `{CONTACT_EMAIL}`
 
-> *提示：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
+> *提示 (Note)：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
+> *(Please state your purpose when adding. For bugs, describe the issue in detail or attach screenshots.)*
 """
 
 def main():
@@ -56,13 +57,13 @@ def main():
 
     # 1. 生成根目录导航 README
     with open("README.md", "w", encoding="utf-8") as f:
-        f.write("# 公开资产下载中心\n\n")
-        f.write(f"> 最后同步时间: {os.popen('date').read().strip()}\n\n")
+        f.write("# 公开资产下载中心 (Public Asset Download Center)\n\n")
+        f.write(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
         
-        # ⚠️ 核心修改：先写入反馈信息，再写入导航
+        # 先写入反馈信息
         f.write(generate_contact_md())
         
-        f.write("\n---\n\n## 📂 项目分类导航\n\n")
+        f.write("\n---\n\n## 📂 项目分类导航 (Project Navigation)\n\n")
         for proj in projects:
             proj_encoded = quote(proj)
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
@@ -98,11 +99,11 @@ def main():
 
         # 组装 Markdown 表格
         md_lines = []
-        md_lines.append(f"# {proj_name} 下载列表\n")
-        md_lines.append(f"> 最后同步时间: {os.popen('date').read().strip()}\n\n")
+        md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
+        md_lines.append(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
         
-        # 子目录：表格放前面
-        md_lines.append("| 插件名称 | 版本 | 下载链接 (明文) | 说明 |")
+        # ⚠️ 双语表头
+        md_lines.append("| 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |")
         md_lines.append("| :--- | :--- | :--- | :--- |")
 
         for plugin_name, versions in plugin_data.items():
