@@ -1,23 +1,24 @@
-# DSH插件 下载列表
+# DSH插件 下载列表 (Download List)
 
-> 最后同步时间: Sat Oct 17 06:02:19 UTC 2026
+> 最后同步时间 (Last Sync Time): Sat Oct 17 06:04:22 UTC 2026
 
 
-| 插件名称 | 版本 | 下载链接 (明文) | 说明 |
+| 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
 | :--- | :--- | :--- | :--- |
 | dsh-av-continuous | 1.0.0 | https://github-download.1253510.com/DSH插件/dsh-av-continuous/1.0.0/dsh-av-continuous-0.1.1.tgz | **1.0.0**: DeepSeek Harness 音视频理解插件。按 every 秒连续抽取视频帧（非仅关键帧），每帧带时间戳并作为原生图像块返回；集成 Silero VAD 与本地 whisper.cpp，在嘈杂环境中过滤噪声并转写语音，输出带时间戳文本，可与视频帧按时间轴对齐。所有处理本地完成，无需外部 API Key，适合监控、会议、访谈等场景。 |
 
 ---
 
-### 💬 反馈与联系方式
+### 💬 反馈与联系方式 (Feedback & Contact)
 
-**遇到问题？需要帮助？**
-- 🐞 **提交工单**: [点击前往 GitHub 议题 (Issues)](https://github.com/Mr-Fu382/public-assets/issues) *(推荐，方便追踪)*
-- 💡 **交流讨论**: [点击前往 GitHub 讨论 (Discussions)](https://github.com/Mr-Fu382/public-assets/discussions) *(分享心得)*
+**遇到问题？需要帮助？(Need help?)**
+- 🐞 **提交工单 (Submit Issue)**: [点击前往 GitHub 议题 (Issues)](https://github.com/Mr-Fu382/public-assets/issues) *(推荐，方便追踪 / Recommended)*
+- 💡 **交流讨论 (Discussions)**: [点击前往 GitHub 讨论 (Discussions)](https://github.com/Mr-Fu382/public-assets/discussions) *(分享心得 / Share ideas)*
 
-**直接联系作者：**
-- 💬 **微信**: `15976948117，Yq13926922459`
+**直接联系作者 (Contact Author)：**
+- 💬 **微信 (WeChat)**: `15976948117; Yq13926922459`
 - 🐧 **QQ**: `3628270735`
-- 📧 **邮箱**: `3628270735@qq.com`
+- 📧 **邮箱 (Email)**: `3628270735@qq.com`
 
-> *提示：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
+> *提示 (Note)：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
+> *(Please state your purpose when adding. For bugs, describe the issue in detail or attach screenshots.)*
