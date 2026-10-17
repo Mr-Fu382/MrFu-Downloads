@@ -1,25 +1,24 @@
-name: 自动同步R2并使用DeepSeek生成美化表格
+name: 自动同步R2公开桶并生成下载表格
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每小时自动跑一次
-  workflow_dispatch:
+    # 每小时的第 0 分钟自动运行一次
+    - cron: '0 * * * *'
+  workflow_dispatch: # 允许你随时在网页上手动触发
 
+# 赋予脚本提交和推送代码的权限
 permissions:
   contents: write
 
 jobs:
-  update-public-downloads:
+  update-download-list:
     runs-on: ubuntu-latest
     steps:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
 
-      - name: 安装 rclone 和 Python
-        run: |
-          curl https://rclone.org/install.sh | sudo bash
-          python3 -m pip install --upgrade pip
-          pip install requests
+      - name: 安装 rclone
+        run: curl https://rclone.org/install.sh | sudo bash
 
       - name: 配置 R2 连接
         env:
@@ -37,24 +36,30 @@ jobs:
           endpoint = $R2_ENDPOINT
           EOF
 
-      - name: 使用 DeepSeek 整合文件列表
-        env:
-          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      - name: 获取 R2 文件列表
         run: |
-          # 获取所有文件列表，保存到 all_files.txt
+          echo "正在拉取 R2 文件列表..."
           rclone lsf r2:public-assets --recursive > all_files.txt
-          
-          # 运行我们写好的 Python 脚本
-          python3 process.py
+          echo "获取完成，共 $(wc -l < all_files.txt) 个文件。"
 
-      - name: 自动提交到 GitHub
+      - name: 执行 Python 生成表格脚本
+        # 注意：这里的路径已修改为隐藏目录下的 scripts 文件夹
+        run: python .github/scripts/process.py
+
+      - name: 清理临时文件
+        # 跑完后立刻删掉，防止被提交到仓库
+        run: rm -f all_files.txt
+
+      - name: 自动提交并推送到 GitHub
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
+          
+          # 检测是否有变化，如果没有变化就不产生空的提交记录
           if git diff --staged --quiet; then
-            echo "无变化，跳过提交。"
+            echo "没有检测到变化，跳过提交。"
           else
-            git commit -m "DeepSeek自动整合并更新下载列表"
+            git commit -m "自动更新 R2 下载列表"
             git push
           fi
