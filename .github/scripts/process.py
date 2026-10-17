@@ -11,6 +11,20 @@ CONTACT_QQ = "3628270735"
 CONTACT_EMAIL = "3628270735@qq.com"
 # ==================================================================
 
+# ================= 📢 置顶公告文本 =================
+ANNOUNCEMENT_MD = """
+> [!WARNING]
+> ### 📢 关于安装渠道调整的致歉与说明
+> 
+> 由于我的 **npm 账号意外丢失且暂时无法找回**，导致原计划通过 npm 分发的渠道被迫中断。
+> 
+> **目前本仓库仅发布了 `dsh-av-continuous` 这一款插件**，其他正在开发中的插件均尚未发布。因此，暂时**仅支持通过 GitHub 超链接从 R2 直接下载** `.gtz` 文件。
+> 
+> R2 直链配备了全球 CDN 加速，下载速度极快。给大家带来的不便，我深表歉意！🙇‍♂️
+---
+"""
+# ====================================================
+
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
@@ -57,10 +71,13 @@ def main():
 
     # 1. 生成根目录导航 README
     with open("README.md", "w", encoding="utf-8") as f:
+        # ⚠️ 核心修改：把公告放在最顶上
+        f.write(ANNOUNCEMENT_MD)
+        
         f.write("# 公开资产下载中心 (Public Asset Download Center)\n\n")
         f.write(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
         
-        # 先写入反馈信息
+        # 写入反馈信息
         f.write(generate_contact_md())
         
         f.write("\n---\n\n## 📂 项目分类导航 (Project Navigation)\n\n")
@@ -99,10 +116,13 @@ def main():
 
         # 组装 Markdown 表格
         md_lines = []
+        # ⚠️ 核心修改：子页面也把公告放最顶上
+        md_lines.append(ANNOUNCEMENT_MD)
+        
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
         md_lines.append(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
         
-        # ⚠️ 双语表头
+        # 双语表头
         md_lines.append("| 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |")
         md_lines.append("| :--- | :--- | :--- | :--- |")
 
