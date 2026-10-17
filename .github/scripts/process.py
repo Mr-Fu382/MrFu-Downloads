@@ -2,16 +2,38 @@ import os
 from urllib.parse import quote
 from collections import defaultdict
 
-# 你的下载域名
+# ================= ⚠️ 请在这里填你的真实联系方式 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
-# 你的 GitHub 仓库地址（用于反馈链接）
 GITHUB_REPO_URL = "https://github.com/Mr-Fu382/public-assets"
+
+CONTACT_WECHAT = "你的微信号"     # 例如: MrFu382
+CONTACT_QQ = "你的QQ号"           # 例如: 12345678
+CONTACT_EMAIL = "你的邮箱"        # 例如: xxx@qq.com
+# ==================================================================
 
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
     '.dmg', '.msi', '.exe', '.gtz', '.pak', '.arc', '.arj', '.lzh', '.cpio'
 )
+
+def generate_contact_md():
+    """生成通用的联系方式和反馈部分"""
+    return f"""
+---
+### 💬 反馈与联系方式
+
+**遇到问题？需要帮助？**
+- 🐞 **提交工单**: [点击前往 GitHub 议题 (Issues)]({GITHUB_REPO_URL}/issues) *(推荐，方便追踪)*
+- 💡 **交流讨论**: [点击前往 GitHub 讨论 (Discussions)]({GITHUB_REPO_URL}/discussions) *(分享心得)*
+
+**直接联系作者：**
+- 💬 **微信**: `{CONTACT_WECHAT}`
+- 🐧 **QQ**: `{CONTACT_QQ}`
+- 📧 **邮箱**: `{CONTACT_EMAIL}`
+
+> *提示：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
+"""
 
 def main():
     if not os.path.exists("all_files.txt"):
@@ -43,11 +65,8 @@ def main():
             proj_encoded = quote(proj)
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
         
-        # 根目录的反馈入口
-        f.write("\n---\n")
-        f.write("### 💬 反馈与支持\n")
-        f.write(f"- 遇到 Bug 或想提建议？请前往 [**GitHub Issues**]({GITHUB_REPO_URL}/issues) 提交反馈。\n")
-        f.write(f"- 想和大家交流心得？请前往 [**GitHub Discussions**]({GITHUB_REPO_URL}/discussions) 参与讨论。\n")
+        # 写入根目录的反馈信息
+        f.write(generate_contact_md())
     print("✅ 根目录导航 README.md 已更新。")
 
     # 2. 遍历每个项目，生成对应的表格
@@ -68,7 +87,6 @@ def main():
                     plugin_data[plugin_name][version]['file'] = file_path
                 else:
                     try:
-                        # 读取说明文件内容
                         raw_content = os.popen(f'rclone cat "r2:public-assets/{file_path}" 2>/dev/null').read().strip()
                         if raw_content:
                             clean_desc = raw_content.replace("\n", " ").replace("\r", "").replace("|", "/")
@@ -115,11 +133,8 @@ def main():
             row = f"| {plugin_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 子目录的反馈入口
-        md_lines.append("\n---")
-        md_lines.append("### 🐞 问题反馈")
-        md_lines.append(f"如果你在使用 **{proj_name}** 中的任何插件时遇到问题，请点击下方链接提交反馈：")
-        md_lines.append(f"👉 [**前往 GitHub Issues 提交问题**]({GITHUB_REPO_URL}/issues)")
+        # 写入子目录的反馈信息
+        md_lines.append(generate_contact_md())
 
         # 写入项目目录
         os.makedirs(proj_name, exist_ok=True)
