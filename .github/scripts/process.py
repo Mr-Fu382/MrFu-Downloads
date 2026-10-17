@@ -19,9 +19,7 @@ ARCHIVE_EXTS = (
 
 def generate_contact_md():
     """生成通用的联系方式和反馈部分"""
-    return f"""
----
-### 💬 反馈与联系方式
+    return f"""### 💬 反馈与联系方式
 
 **遇到问题？需要帮助？**
 - 🐞 **提交工单**: [点击前往 GitHub 议题 (Issues)]({GITHUB_REPO_URL}/issues) *(推荐，方便追踪)*
@@ -60,13 +58,15 @@ def main():
     with open("README.md", "w", encoding="utf-8") as f:
         f.write("# 公开资产下载中心\n\n")
         f.write(f"> 最后同步时间: {os.popen('date').read().strip()}\n\n")
-        f.write("## 📂 项目分类导航\n\n")
+        
+        # ⚠️ 核心修改：先写入反馈信息，再写入导航
+        f.write(generate_contact_md())
+        
+        f.write("\n---\n\n## 📂 项目分类导航\n\n")
         for proj in projects:
             proj_encoded = quote(proj)
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
-        
-        # 写入根目录的反馈信息
-        f.write(generate_contact_md())
+            
     print("✅ 根目录导航 README.md 已更新。")
 
     # 2. 遍历每个项目，生成对应的表格
@@ -99,7 +99,9 @@ def main():
         # 组装 Markdown 表格
         md_lines = []
         md_lines.append(f"# {proj_name} 下载列表\n")
-        md_lines.append(f"> 最后同步时间: {os.popen('date').read().strip()}\n")
+        md_lines.append(f"> 最后同步时间: {os.popen('date').read().strip()}\n\n")
+        
+        # 子目录：表格放前面
         md_lines.append("| 插件名称 | 版本 | 下载链接 (明文) | 说明 |")
         md_lines.append("| :--- | :--- | :--- | :--- |")
 
@@ -133,7 +135,8 @@ def main():
             row = f"| {plugin_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 写入子目录的反馈信息
+        # 子目录：表格下方写入反馈信息
+        md_lines.append("\n---\n")
         md_lines.append(generate_contact_md())
 
         # 写入项目目录
