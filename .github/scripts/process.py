@@ -2,10 +2,9 @@ import os
 from urllib.parse import quote
 from collections import defaultdict
 
-# 你的下载域名前缀
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
 
-# 支持的所有压缩包/镜像格式（7-Zip 常见格式）
+# 支持的所有压缩包/镜像格式
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
@@ -54,7 +53,7 @@ def main():
         for file_path in proj_files:
             parts = file_path.split("/")
             
-            # 严格解析 4 层结构：项目 / 插件 / 版本 / 文件
+            # 严格解析 4 层结构
             if len(parts) >= 4:
                 plugin_name = parts[1]
                 version = parts[2]
@@ -64,18 +63,16 @@ def main():
                 if filename.lower().endswith(ARCHIVE_EXTS):
                     plugin_data[plugin_name][version]['file'] = file_path
                 else:
-                    # 识别为说明文件，读取内容
+                    # 识别为说明文件
                     try:
                         raw_content = os.popen(f'rclone cat "r2:public-assets/{file_path}" 2>/dev/null').read().strip()
                         if raw_content:
-                            # 替换换行符和竖线，防止 Markdown 表格崩塌
                             clean_desc = raw_content.replace("\n", " ").replace("\r", "").replace("|", "/")
-                            # 放宽到 500 字符
                             if len(clean_desc) > 500:
                                 clean_desc = clean_desc[:500] + "..."
                             plugin_data[plugin_name][version]['desc'] = clean_desc
-                    except Exception as e:
-                        print(f"  [警告] 读取说明失败: {file_path}")
+                    except Exception:
+                        pass
 
         # 5. 组装 Markdown 表格
         md_lines = []
@@ -85,7 +82,6 @@ def main():
         md_lines.append("| :--- | :--- | :--- | :--- |")
 
         for plugin_name, versions in plugin_data.items():
-            # 按版本号排序
             sorted_versions = sorted(versions.keys())
             
             version_list = []
@@ -98,21 +94,29 @@ def main():
                 # 版本号
                 version_list.append(v)
                 
-                # 下载链接
+                # ⚠️ 这里改成了明文链接输出
                 if 'file' in info:
                     encoded_zip = info['file'].replace(" ", "%20")
-                    download_list.append(f"[{v}]({BASE_DOWNLOAD_URL}{encoded_zip})")
+                    full_url = f"{BASE_DOWNLOAD_URL}{encoded_zip}"
+                    # 如果有多个版本，前面加上版本号标识，防止混淆
+                    if len(sorted_versions) > 1:
+                        download_list.append(f"**{v}**: {full_url}")
+                    else:
+                        download_list.append(full_url)
                 else:
                     download_list.append("-")
                     
-                # 说明（带版本号标注，用 <br> 换行，保证对应关系）
+                # 说明
                 if 'desc' in info and info['desc']:
                     desc_list.append(f"**{v}**: {info['desc']}")
                 else:
                     desc_list.append("-")
 
-            # 组装成一行
-            row = f"| {plugin_name} | {', '.join(version_list)} | {', '.join(download_list)} | {' <br> '.join(desc_list)} |"
+            # 多版本链接用 <br> 换行，单版本直接拼接
+            download_joined = " <br> ".join(download_list)
+            desc_joined = " <br> ".join(desc_list)
+
+            row = f"| {plugin_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
         # 6. 写入项目目录
