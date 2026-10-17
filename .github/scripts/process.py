@@ -6,9 +6,9 @@ from collections import defaultdict
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
 GITHUB_REPO_URL = "https://github.com/Mr-Fu382/public-assets"
 
-CONTACT_WECHAT = "你的微信号"     # 例如: MrFu382
-CONTACT_QQ = "你的QQ号"           # 例如: 12345678
-CONTACT_EMAIL = "你的邮箱"        # 例如: xxx@qq.com
+CONTACT_WECHAT = "15976948117，Yq13926922459"     # 例如: MrFu382
+CONTACT_QQ = "3628270735"           # 例如: 12345678
+CONTACT_EMAIL = "3628270735@qq.com"        # 例如: xxx@qq.com
 # ==================================================================
 
 ARCHIVE_EXTS = (
