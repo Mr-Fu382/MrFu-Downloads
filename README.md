@@ -1,6 +1,16 @@
+
+> [!WARNING]
+> ### 📢 关于安装渠道调整的致歉与说明
+> 
+> 由于我的 **npm 账号意外丢失且暂时无法找回**，导致原计划通过 npm 分发的渠道被迫中断。
+> 
+> **目前本仓库仅发布了 `dsh-av-continuous` 这一款插件**，其他正在开发中的插件均尚未发布。因此，暂时**仅支持通过 GitHub 超链接从 R2 直接下载** `.gtz` 文件。
+> 
+> R2 直链配备了全球 CDN 加速，下载速度极快。给大家带来的不便，我深表歉意！🙇‍♂️
+---
 # 公开资产下载中心 (Public Asset Download Center)
 
-> 最后同步时间 (Last Sync Time): Sat Oct 17 11:13:47 UTC 2026
+> 最后同步时间 (Last Sync Time): Sat Oct 17 11:34:29 UTC 2026
 
 ### 💬 反馈与联系方式 (Feedback & Contact)
 
