@@ -1,5 +1,4 @@
 import os
-import re
 from urllib.parse import quote
 from collections import defaultdict
 
@@ -30,84 +29,81 @@ with open("README.md", "w", encoding="utf-8") as f:
     for proj in projects:
         proj_encoded = quote(proj)
         f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
+
 print("根目录 README.md 已更新。")
 
-# 4. 遍历每个项目，用纯 Python 逻辑生成表格
+# 4. 遍历每个项目，通过强制的 4 层结构解析（项目/插件/版本/文件）
 for proj_name, proj_files in projects.items():
     print(f"正在处理项目: {proj_name}")
-    
-    # 数据结构：{ '插件名': { '1.0.0': { 'zip': '路径', 'desc': '说明内容' } } }
+
+    # 数据结构：{ 插件名: { 版本号: { 'file': 压缩包路径, 'desc': 说明文本 } } }
     plugin_data = defaultdict(lambda: defaultdict(dict))
-    
+
     for file_path in proj_files:
-        # 按 / 分割，预计格式：项目/插件/版本/文件
         parts = file_path.split("/")
+        
+        # 必须严格符合 4 层结构，才录入表格
         if len(parts) >= 4:
             plugin_name = parts[1]
             version = parts[2]
             filename = parts[3]
-            
-            # 判断是否为压缩包
+
+            # 判断是不是压缩包
             if filename.lower().endswith(('.zip', '.7z', '.rar', '.tar.gz', '.tar')):
-                plugin_data[plugin_name][version]['zip'] = file_path
+                plugin_data[plugin_name][version]['file'] = file_path
             else:
-                # 不是压缩包，就当做说明文件，读取其内容
+                # 不是压缩包，一律视为说明文件，直接读取内容
                 try:
-                    # rclone cat 读取内容
                     raw_content = os.popen(f'rclone cat "r2:public-assets/{file_path}" 2>/dev/null').read().strip()
                     if raw_content:
-                        # 清除换行符，防止表格崩塌
-                        clean_desc = raw_content.replace("\n", " ").replace("\r", "").strip()
-                        # 转义表格分隔符竖线，防止排版错位
-                        clean_desc = clean_desc.replace("|", "/")
-                        # 截断过长的说明（最多80个字符，保持表格美观）
+                        # 替换换行符、竖线，防止表格排版损坏
+                        clean_desc = raw_content.replace("\n", " ").replace("\r", "").replace("|", "/")
+                        # 截取前 80 个字符，保持表格美观
                         if len(clean_desc) > 80:
                             clean_desc = clean_desc[:80] + "..."
                         plugin_data[plugin_name][version]['desc'] = clean_desc
-                except Exception as e:
-                    print(f"读取说明失败: {file_path}, 错误: {e}")
-        else:
-            # 不符合层级的文件，放到“其他”分类
-            pass
+                except:
+                    pass
 
-    # 开始生成项目 README 内容
+    # 生成项目内部的 Markdown 表格
     md_lines = []
     md_lines.append(f"# {proj_name} 下载列表\n")
     md_lines.append(f"> 最后同步时间: {os.popen('date').read().strip()}\n")
     md_lines.append("| 插件名称 | 版本 | 下载链接 | 说明 |")
     md_lines.append("| :--- | :--- | :--- | :--- |")
-    
+
     for plugin_name, versions in plugin_data.items():
-        # 按版本号排序（尝试按字典序，如果需要严格版本排序可另写逻辑）
+        # 按版本号从小到大排序
         sorted_versions = sorted(versions.keys())
-        
+
         version_list = []
         download_list = []
         desc_list = []
-        
+
         for v in sorted_versions:
             info = versions[v]
-            # 1. 版本号拼接
+            
+            # 1. 版本号
             version_list.append(v)
             
-            # 2. 下载链接拼接
-            if 'zip' in info:
-                encoded_zip = info['zip'].replace(" ", "%20")
+            # 2. 下载链接
+            if 'file' in info:
+                encoded_zip = info['file'].replace(" ", "%20")
                 download_list.append(f"[{v}]({BASE_DOWNLOAD_URL}{encoded_zip})")
             else:
                 download_list.append("-")
                 
-            # 3. 说明拼接（不同版本的说明按顺序对应）
+            # 3. 说明（用 <br> 换行，把版本号和说明绑定在一起，保证完美对应）
             if 'desc' in info and info['desc']:
-                desc_list.append(f"`{v}` {info['desc']}")
+                desc_list.append(f"**{v}**: {info['desc']}")
             else:
                 desc_list.append("-")
-        
-        # 组装成一行表格
-        row = f"| {plugin_name} | {', '.join(version_list)} | {', '.join(download_list)} | {'<br>'.join(desc_list)} |"
+
+        # 合并成表格的一行
+        row = f"| {plugin_name} | {', '.join(version_list)} | {', '.join(download_list)} | {' <br> '.join(desc_list)} |"
         md_lines.append(row)
-    
-    # 写入项目文件夹的 README.md
+
+    # 写入项目专属的 README.md
     proj_dir = proj_name
     os.makedirs(proj_dir, exist_ok=True)
     with open(f"{proj_dir}/README.md", "w", encoding="utf-8") as f:
