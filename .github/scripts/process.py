@@ -29,21 +29,23 @@ LICENSE_DISCLAIMER_MD = """
 1. **内容类型与版权归属**：本仓库（Links-Hub）分发的资源类型多样，版权归属情况如下：
    - **原创内容**：由作者（Mr. Fu）完全原创的插件与工具，其著作权归 Mr. Fu 所有。
    - **汉化与修改版**：基于第三方开源/免费软件制作的汉化补丁，**原软件的著作权归其原作者所有**，Mr. Fu 不主张对原软件的任何版权。
-   - **合作/授权分发内容**：由 Mr. Fu 与第三方（如 GitHub 开发者、社区、团队等）联合开发，或经原作者明确授权在本仓库进行分发的内容。此类内容的版权归原团队或合作双方共同所有。
+   - **合作/授权分发内容**：由 Mr. Fu 与第三方联合开发，或经原作者明确授权在本仓库进行分发的内容。此类内容的版权归原团队或合作双方共同所有。
 2. **署名权保护**：严禁任何人抹除、篡改本仓库内任何资源的作者署名、版权声明或合作标识。
 3. **停止分发条款**：如果任何原软件作者、合作方或权利所有人认为本仓库的分发行为侵犯了其权益，请联系我（Mr. Fu），我将立即无条件下线相关资源。
 4. **严禁商用**：无论资源属于上述何种类型，**严禁任何人将本仓库分发的资源用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
-5. **免责条款**：所有资源均按“原样”提供。对于因下载、安装或使用本站资源而导致的任何数据丢失、系统损坏、版权纠纷或其他直接/间接损失，**作者（Mr. Fu）、合作方及本仓库不承担任何法律或连带责任**。请在使用前确认您已合法拥有相关软件的授权，并做好数据备份。
+5. **免责条款**：所有资源均按“原样”提供。对于因下载、安装或使用本站资源而导致的任何数据丢失、系统损坏、版权纠纷或其他直接/间接损失，**作者（Mr. Fu）、合作方及本仓库不承担任何法律或连带责任**。
+6. **项目专属声明优先原则**：**本声明为兜底通用条款。若某具体资源（插件/汉化包等）在其独立的项目源码库或压缩包内附带了具体的 `LICENSE` 或版权声明，则以该项目的专属声明为准。** 若存在冲突，以项目内声明为最高优先级。
 
 **【English】**
 1. **Content Types & Copyright Attribution**: Resources distributed in this repository (Links-Hub) fall into the following categories:
-   - **Original Content**: Completely original plugins and tools created by Mr. Fu; copyright belongs to Mr. Fu.
-   - **Localizations & Mods**: Patches based on third-party software; **copyright of the original software belongs to its respective original authors**. Mr. Fu claims no copyright over the original software.
-   - **Cooperative/Authorized Content**: Resources jointly developed by Mr. Fu and third parties (e.g., GitHub developers, communities, teams), or distributed with explicit authorization from the original authors. The copyright of such content belongs to the original team or both parties.
-2. **Attribution Protection**: Removing or tampering with the author credits, copyright notices, or cooperation marks of any resources in this repository is strictly prohibited.
-3. **Takedown Policy**: If any original author, partner, or rights holder believes that the distribution in this repository infringes their rights, please contact me (Mr. Fu), and I will immediately take down the relevant resources unconditionally.
-4. **Non-Commercial**: Regardless of the type, **any commercial use (including but not limited to selling, renting, bundling, or reselling) of the resources distributed in this repository is strictly prohibited.**
-5. **Disclaimer**: All resources are provided "AS IS". **The author (Mr. Fu), partners, and this repository are NOT liable for any data loss, system damage, copyright disputes, or other direct/indirect damages** caused by downloading, installing, or using these resources. Please ensure you legally own the required software licenses before use, and back up your data.
+   - **Original Content**: Copyright belongs to Mr. Fu.
+   - **Localizations & Mods**: **Copyright of the original software belongs to its respective original authors**. Mr. Fu claims no copyright over the original software.
+   - **Cooperative/Authorized Content**: Copyright belongs to the original team or both parties.
+2. **Attribution Protection**: Removing or tampering with author credits or cooperation marks is strictly prohibited.
+3. **Takedown Policy**: If any rights holder believes this distribution infringes their rights, please contact me, and I will take down the resources unconditionally.
+4. **Non-Commercial**: **Any commercial use of the resources distributed in this repository is strictly prohibited.**
+5. **Disclaimer**: All resources are provided "AS IS". **The author, partners, and this repository are NOT liable for any data loss or damages.**
+6. **Precedence of Project-Specific Licenses**: **This is a general fallback declaration. If a specific resource includes its own `LICENSE` or copyright notice in its source repository or package, that project-specific declaration shall prevail.** In case of any conflict, the project-level declaration takes precedence.
 """
 # ==================================================================
 
