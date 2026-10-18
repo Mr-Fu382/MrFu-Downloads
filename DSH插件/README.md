@@ -2,13 +2,13 @@
 > [!TIP]
 > ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
 > 
-> 这里是所有插件、汉化包及其他资源的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
-> *(This is the official distribution channel for all plugins, localizations, and other resources. All files are hosted on Cloudflare R2 for extreme download speed.)*
+> 这里是本项目的**官方展示与核心分发中心**。为了保证极致的下载速度，所有大文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。此外，部分插件也会同步发布至 npm、GitHub Releases 等其他平台，请根据您的网络环境自由选择。
+> *(This is the **official showcase and core distribution center** for this project. For extreme download speeds, all large files are hosted on **Cloudflare R2 (Global CDN)**. Additionally, some plugins are also distributed via platforms like npm and GitHub Releases. Please choose based on your network environment.)*
 ---
 
 # DSH插件 下载列表 (Download List)
 
-> 最后同步时间 (Last Sync Time): Sun Oct 18 15:27:02 UTC 2026
+> 最后同步时间 (Last Sync Time): Sun Oct 18 15:30:19 UTC 2026
 
 
 | 资源名称 (Resource) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
