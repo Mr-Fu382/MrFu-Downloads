@@ -2,28 +2,32 @@ import os
 from urllib.parse import quote
 from collections import defaultdict
 
-# ================= ⚠️ 请在这里填你的真实联系方式 =================
+# ================= ⚠️ 配置区 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
-GITHUB_REPO_URL = "https://github.com/Mr-Fu382/public-assets"
+# 这里已经更新为你现在的仓库名 links-hub
+GITHUB_REPO_URL = "https://github.com/Mr-Fu382/links-hub"
 
 CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
 CONTACT_EMAIL = "3628270735@qq.com"
-# ==================================================================
+# ==============================================
 
-# ================= 📢 置顶公告文本 =================
+# ================= 📢 置顶公告（中英双语） =================
 ANNOUNCEMENT_MD = """
 > [!WARNING]
-> ### 📢 关于安装渠道调整的致歉与说明
+> ### 📢 关于安装渠道调整的致歉与说明 (Apology and Notice Regarding Installation Channel Adjustment)
 > 
 > 由于我的 **npm 账号意外丢失且暂时无法找回**，导致原计划通过 npm 分发的渠道被迫中断。
+> *(Due to the unexpected loss of my npm account and temporary inability to recover it, the npm distribution channel has been interrupted.)*
 > 
 > **目前本仓库仅发布了 `dsh-av-continuous` 这一款插件**，其他正在开发中的插件均尚未发布。因此，暂时**仅支持通过 GitHub 超链接从 R2 直接下载** `.gtz` 文件。
+> *(Currently, only `dsh-av-continuous` has been released. Other plugins are under development and not yet published. Therefore, it only supports direct download of `.gtz` files from R2 via GitHub hyperlinks for now.)*
 > 
 > R2 直链配备了全球 CDN 加速，下载速度极快。给大家带来的不便，我深表歉意！🙇‍♂️
+> *(The R2 direct link features global CDN acceleration for extremely fast downloads. I sincerely apologize for any inconvenience caused!)*
 ---
 """
-# ====================================================
+# =========================================================
 
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
@@ -35,7 +39,7 @@ def generate_contact_md():
     """生成中英双语的反馈与联系方式"""
     return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
-**遇到问题？需要帮助？(Need help?)**
+**遇到问题？需要帮助？ (Need help?)**
 - 🐞 **提交工单 (Submit Issue)**: [点击前往 GitHub 议题 (Issues)]({GITHUB_REPO_URL}/issues) *(推荐，方便追踪 / Recommended)*
 - 💡 **交流讨论 (Discussions)**: [点击前往 GitHub 讨论 (Discussions)]({GITHUB_REPO_URL}/discussions) *(分享心得 / Share ideas)*
 
@@ -67,22 +71,23 @@ def main():
         if len(parts) > 1:
             projects[parts[0]].append(file)
         else:
-            projects["其他"].append(file)
+            projects["其他/Others"].append(file)
 
     # 1. 生成根目录导航 README
     with open("README.md", "w", encoding="utf-8") as f:
-        # ⚠️ 核心修改：把公告放在最顶上
+        # 置顶公告
         f.write(ANNOUNCEMENT_MD)
         
         f.write("# 公开资产下载中心 (Public Asset Download Center)\n\n")
         f.write(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
         
-        # 写入反馈信息
+        # 反馈信息
         f.write(generate_contact_md())
         
         f.write("\n---\n\n## 📂 项目分类导航 (Project Navigation)\n\n")
         for proj in projects:
             proj_encoded = quote(proj)
+            # 如果项目名里有中文，可以尝试加个英文，这里默认直接用原名
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
             
     print("✅ 根目录导航 README.md 已更新。")
@@ -116,7 +121,7 @@ def main():
 
         # 组装 Markdown 表格
         md_lines = []
-        # ⚠️ 核心修改：子页面也把公告放最顶上
+        # 子页面置顶公告
         md_lines.append(ANNOUNCEMENT_MD)
         
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
@@ -156,7 +161,7 @@ def main():
             row = f"| {plugin_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 子目录：表格下方写入反馈信息
+        # 子页面底部反馈信息
         md_lines.append("\n---\n")
         md_lines.append(generate_contact_md())
 
