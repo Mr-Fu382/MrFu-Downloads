@@ -10,6 +10,7 @@ CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
 CONTACT_EMAIL = "3628270735@qq.com"
 
+# 置顶的欢迎公告
 ANNOUNCEMENT_MD = """
 > [!TIP]
 > ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
@@ -25,28 +26,33 @@ LICENSE_DISCLAIMER_MD = """
 ### 📜 第三方软件汉化与分发通用声明 (General Declaration for Third-Party Localization)
 
 **【中文】**
-1. **版权归属**：本仓库（Links-Hub）分发的部分汉化作品，是对**第三方开源或免费软件**的本地化补丁。**原软件的著作权、商标权及相关知识产权均归其原作者所有。** 本仓库及汉化作者（Mr. Fu）不主张对原软件的任何版权。
-2. **汉化声明**：本仓库提供的汉化内容（包括但不限于翻译文本、修改的资源文件、重新打包的安装程序）为汉化作者的无偿劳动成果。如果原作者更新了代码或不同意此类分发，请联系我，我将立即下线相关资源。
-3. **禁止商用**：无论原软件采用何种开源协议，**严禁任何人将本仓库分发的汉化包或绿色版用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
-4. **免责条款**：所有资源均按“原样”提供，不附带任何担保。对于因下载、安装或使用本站资源而导致的任何数据丢失、系统损坏、版权纠纷或其他直接/间接损失，本仓库及作者不承担任何法律或连带责任。请在使用前确认您已合法拥有原软件的授权，并做好数据备份。
+1. **汉化制作声明**：**本仓库（Links-Hub）内提供的所有第三方软件汉化补丁、翻译文本及重新打包的绿色版，均由汉化作者（Mr. Fu）独立制作完成。** 严禁任何人抹除、篡改本汉化版本的署名信息。
+2. **原软件版权归属**：本仓库所分发的作品，均基于**第三方开源或免费软件**进行汉化。**原软件的著作权、商标权及相关知识产权均完全归属于其原作者所有。** 汉化作者（Mr. Fu）不主张对原软件的任何版权。
+3. **停止分发条款**：如果原软件作者更新了代码，或者不同意此类二次分发，请联系我（Mr. Fu），我将立即下线相关资源。
+4. **严禁商用**：无论原软件采用何种开源协议，**严禁任何人将本仓库分发的、由 Mr. Fu 制作的汉化包或绿色版用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
+5. **免责条款**：所有资源均按“原样”提供。对于因下载、安装或使用本站资源而导致的任何数据丢失、系统损坏、版权纠纷或其他直接/间接损失，**汉化作者（Mr. Fu）及本仓库不承担任何法律或连带责任**。请在使用前确认您已合法拥有原软件的授权，并做好数据备份。
 
 **【English】**
-1. **Copyright Attribution**: Some localized works distributed in this repository (Links-Hub) are localization patches for **third-party open-source or free software**. **The copyright, trademark, and related intellectual property rights of the original software belong to their respective original authors.** This repository and the localizer (Mr. Fu) do not claim any copyright over the original software.
-2. **Localization Notice**: The localization content (including but not limited to translated texts, modified resource files, and repackaged installers) provided in this repository is the unpaid work of the localizer. If the original author updates the code or does not agree with this kind of distribution, please contact me, and I will immediately take down the relevant resources.
-3. **Non-Commercial**: Regardless of the original software's open-source license, **any commercial use (including but not limited to selling, renting, bundling, or reselling) of the localization packages or green versions distributed in this repository is strictly prohibited.**
-4. **Disclaimer**: All resources are provided "AS IS", without warranty of any kind. The repository owner and authors are NOT liable for any data loss, system damage, copyright disputes, or other direct/indirect damages caused by downloading, installing, or using these resources. Please ensure you legally own the license of the original software before use, and back up your data.
+1. **Localization Notice**: **All third-party software localization patches, translated texts, and repackaged green versions provided in this repository (Links-Hub) are independently created by the localizer (Mr. Fu).** Removing or tampering with the credits of this localization is strictly prohibited.
+2. **Original Copyright**: The distributed works in this repository are based on **third-party open-source or free software**. **The copyright, trademark, and related intellectual property rights of the original software belong entirely to their respective original authors.** The localizer (Mr. Fu) claims no copyright over the original software.
+3. **Takedown Policy**: If the original author updates the code or does not agree with this secondary distribution, please contact me (Mr. Fu), and I will immediately take down the relevant resources.
+4. **Non-Commercial**: Regardless of the original software's license, **any commercial use (including but not limited to selling, renting, bundling, or reselling) of the localization packages or green versions created by Mr. Fu is strictly prohibited.**
+5. **Disclaimer**: All resources are provided "AS IS". **The localizer (Mr. Fu) and this repository are NOT liable for any data loss, system damage, copyright disputes, or other direct/indirect damages** caused by downloading, installing, or using these resources. Please ensure you legally own the license of the original software before use, and back up your data.
 """
 # ==================================================================
 
+# 支持的可执行包后缀
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
     '.dmg', '.msi', '.exe', '.gtz', '.pak', '.arc', '.arj', '.lzh', '.cpio'
 )
 
+# 忽略的系统垃圾文件
 IGNORE_FILES = ['.DS_Store', 'Thumbs.db', 'desktop.ini']
 
 def generate_contact_md():
+    """生成联系方式模块"""
     return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
 **遇到问题？需要帮助？ (Need help?)**
@@ -101,6 +107,7 @@ def main():
     for proj_name, proj_files in projects.items():
         print(f"正在处理分类: {proj_name}")
         
+        # 数据结构：{ '资源名': { '版本号': { 'files': [ (文件名, 路径), ... ], 'desc': '说明' } } }
         asset_data = defaultdict(lambda: defaultdict(lambda: {'files': [], 'desc': ''}))
 
         for file_path in proj_files:
@@ -112,6 +119,7 @@ def main():
             parts = file_path.split("/")
             path_len = len(parts)
             
+            # 智能层级解析引擎
             if path_len >= 3:
                 version = parts[-2]
                 if path_len > 3:
@@ -124,6 +132,7 @@ def main():
             else:
                 continue
 
+            # 识别压缩包并读取 txt 说明
             if filename.lower().endswith(ARCHIVE_EXTS):
                 asset_data[asset_name][version]['files'].append((filename, file_path))
             else:
@@ -140,6 +149,7 @@ def main():
                 except Exception:
                     pass
 
+        # 组装 Markdown 表格
         md_lines = []
         md_lines.append(ANNOUNCEMENT_MD)
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
