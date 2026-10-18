@@ -2,32 +2,21 @@ import os
 from urllib.parse import quote
 from collections import defaultdict
 
-# ================= ⚠️ 配置区 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
-# 这里已经更新为你现在的仓库名 links-hub
 GITHUB_REPO_URL = "https://github.com/Mr-Fu382/links-hub"
 
 CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
 CONTACT_EMAIL = "3628270735@qq.com"
-# ==============================================
 
-# ================= 📢 置顶公告（中英双语） =================
 ANNOUNCEMENT_MD = """
-> [!WARNING]
-> ### 📢 关于安装渠道调整的致歉与说明 (Apology and Notice Regarding Installation Channel Adjustment)
+> [!TIP]
+> ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
 > 
-> 由于我的 **npm 账号意外丢失且暂时无法找回**，导致原计划通过 npm 分发的渠道被迫中断。
-> *(Due to the unexpected loss of my npm account and temporary inability to recover it, the npm distribution channel has been interrupted.)*
-> 
-> **目前本仓库仅发布了 `dsh-av-continuous` 这一款插件**，其他正在开发中的插件均尚未发布。因此，暂时**仅支持通过 GitHub 超链接从 R2 直接下载** `.gtz` 文件。
-> *(Currently, only `dsh-av-continuous` has been released. Other plugins are under development and not yet published. Therefore, it only supports direct download of `.gtz` files from R2 via GitHub hyperlinks for now.)*
-> 
-> R2 直链配备了全球 CDN 加速，下载速度极快。给大家带来的不便，我深表歉意！🙇‍♂️
-> *(The R2 direct link features global CDN acceleration for extremely fast downloads. I sincerely apologize for any inconvenience caused!)*
+> 这里是所有插件的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
+> *(This is the official distribution channel for all plugins. All files are hosted on Cloudflare R2 for extreme download speed.)*
 ---
 """
-# =========================================================
 
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
@@ -36,7 +25,6 @@ ARCHIVE_EXTS = (
 )
 
 def generate_contact_md():
-    """生成中英双语的反馈与联系方式"""
     return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
 **遇到问题？需要帮助？ (Need help?)**
@@ -49,7 +37,6 @@ def generate_contact_md():
 - 📧 **邮箱 (Email)**: `{CONTACT_EMAIL}`
 
 > *提示 (Note)：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
-> *(Please state your purpose when adding. For bugs, describe the issue in detail or attach screenshots.)*
 """
 
 def main():
@@ -64,7 +51,6 @@ def main():
         print("R2 中暂无文件，退出。")
         return
 
-    # 按第一层项目分组
     projects = defaultdict(list)
     for file in files:
         parts = file.split("/")
@@ -73,61 +59,62 @@ def main():
         else:
             projects["其他/Others"].append(file)
 
-    # 1. 生成根目录导航 README
     with open("README.md", "w", encoding="utf-8") as f:
-        # 置顶公告
         f.write(ANNOUNCEMENT_MD)
-        
         f.write("# 公开资产下载中心 (Public Asset Download Center)\n\n")
         f.write(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
-        
-        # 反馈信息
         f.write(generate_contact_md())
-        
         f.write("\n---\n\n## 📂 项目分类导航 (Project Navigation)\n\n")
         for proj in projects:
             proj_encoded = quote(proj)
-            # 如果项目名里有中文，可以尝试加个英文，这里默认直接用原名
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
             
     print("✅ 根目录导航 README.md 已更新。")
 
-    # 2. 遍历每个项目，生成对应的表格
     for proj_name, proj_files in projects.items():
         print(f"正在处理项目: {proj_name}")
-        
         plugin_data = defaultdict(lambda: defaultdict(dict))
 
         for file_path in proj_files:
             parts = file_path.split("/")
+            path_len = len(parts)
             
-            if len(parts) >= 4:
-                plugin_name = parts[1]
-                version = parts[2]
-                filename = parts[3]
-
-                if filename.lower().endswith(ARCHIVE_EXTS):
-                    plugin_data[plugin_name][version]['file'] = file_path
+            # ⚠️ 终极智能解析逻辑
+            if path_len >= 3:
+                filename = parts[-1]
+                version = parts[-2]
+                
+                # 如果中间还有多余的层级，全部拼起来当作插件名
+                if path_len > 3:
+                    plugin_name = " / ".join(parts[1:-2])
                 else:
-                    try:
-                        raw_content = os.popen(f'rclone cat "r2:public-assets/{file_path}" 2>/dev/null').read().strip()
-                        if raw_content:
-                            clean_desc = raw_content.replace("\n", " ").replace("\r", "").replace("|", "/")
-                            if len(clean_desc) > 500:
-                                clean_desc = clean_desc[:500] + "..."
-                            plugin_data[plugin_name][version]['desc'] = clean_desc
-                    except Exception:
-                        pass
+                    # 如果就是3层（比如 项目/1.0.0/文件.zip），就把项目名当插件名
+                    plugin_name = parts[0]
+            elif path_len == 2:
+                # 兼容极端的2层结构：项目/文件.zip
+                filename = parts[-1]
+                version = "默认"
+                plugin_name = parts[0]
+            else:
+                continue # 只有文件没有文件夹，跳过
 
-        # 组装 Markdown 表格
+            if filename.lower().endswith(ARCHIVE_EXTS):
+                plugin_data[plugin_name][version]['file'] = file_path
+            else:
+                try:
+                    raw_content = os.popen(f'rclone cat "r2:public-assets/{file_path}" 2>/dev/null').read().strip()
+                    if raw_content:
+                        clean_desc = raw_content.replace("\n", " ").replace("\r", "").replace("|", "/")
+                        if len(clean_desc) > 500:
+                            clean_desc = clean_desc[:500] + "..."
+                        plugin_data[plugin_name][version]['desc'] = clean_desc
+                except Exception:
+                    pass
+
         md_lines = []
-        # 子页面置顶公告
         md_lines.append(ANNOUNCEMENT_MD)
-        
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
         md_lines.append(f"> 最后同步时间 (Last Sync Time): {os.popen('date').read().strip()}\n\n")
-        
-        # 双语表头
         md_lines.append("| 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |")
         md_lines.append("| :--- | :--- | :--- | :--- |")
 
@@ -161,11 +148,9 @@ def main():
             row = f"| {plugin_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 子页面底部反馈信息
         md_lines.append("\n---\n")
         md_lines.append(generate_contact_md())
 
-        # 写入项目目录
         os.makedirs(proj_name, exist_ok=True)
         with open(f"{proj_name}/README.md", "w", encoding="utf-8") as f:
             f.write("\n".join(md_lines))
