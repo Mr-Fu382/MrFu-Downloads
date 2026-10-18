@@ -1,24 +1,45 @@
+================================================================================
+CUSTOM LICENSE FOR ORIGINAL WORKS & THIRD-PARTY LOCALIZATIONS
+原创作品及第三方汉化定制许可协议
 Copyright (c) 2026 Mr. Fu. All rights reserved.
-版权所有 (c) 2026 Mr. Fu。保留所有权利。
+================================================================================
 
 【English Version】
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, and distribute copies of the Software, 
-subject to the following conditions:
+This license applies to the contents of the repository (Links-Hub). Because this repository contains both Original Works and Third-Party Localizations, the terms are strictly divided as follows:
 
-1. NON-COMMERCIAL USE ONLY: The Software shall NOT be used for any commercial purposes. You may NOT sell, lease, rent, or otherwise charge a fee for the Software or any derivative works based on it.
-2. ATTRIBUTION REQUIREMENT: The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. You MUST NOT remove, alter, or obscure the original author's name or this license statement.
-3. The Software is provided "AS IS", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the author be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the Software or the use or other dealings in the Software.
+PART 1: ORIGINAL WORKS (Created by Mr. Fu)
+--------------------------------------------------------------------------------
+Permission is hereby granted, free of charge, to any person obtaining a copy of the Original Works (including plugins and tools created entirely by Mr. Fu), to deal in the Original Works without restriction, including without limitation the rights to use, copy, modify, merge, publish, and distribute, subject to the following conditions:
+1. NON-COMMERCIAL USE ONLY: You may NOT sell, lease, rent, or otherwise charge a fee for the Original Works or any derivative works.
+2. ATTRIBUTION: The above copyright notice and this permission notice shall be included in all copies. You MUST NOT remove or alter the original author's name.
+3. DISCLAIMER: The Original Works are provided "AS IS", without warranty of any kind. The author is not liable for any damages.
+
+PART 2: THIRD-PARTY LOCALIZATIONS (Translations & Mods by Mr. Fu)
+--------------------------------------------------------------------------------
+1. The localization patches or modified versions distributed here are based on third-party open-source or free software. 
+2. COPYRIGHT OF THE ORIGINAL SOFTWARE REMAINS WITH ITS ORIGINAL AUTHORS. Mr. Fu claims no copyright over the original software.
+3. The terms of use for these localized works are governed STRICTLY BY THE ORIGINAL PROJECT'S LICENSE. If the original author does not agree with this secondary distribution, the localized resources will be immediately taken down upon request.
+
+COMMERCIAL USE OF ANY CONTENT (ORIGINAL OR LOCALIZED) DISTRIBUTED IN THIS REPOSITORY IS STRICTLY PROHIBITED.
 
 --------------------------------------------------------------------------------
 
 【简体中文版】
 
-特此免费授予任何获得本软件及相关文档文件（以下简称“软件”）副本的人不受限制地处理本软件的权利，包括但不限于使用、复制、修改、合并、发布和分发本软件的权利，但必须满足以下条件：
+本许可协议适用于本仓库（Links-Hub）的内容。由于本仓库同时包含“原创作品”与“第三方汉化作品”，条款严格划分如下：
 
-1. 仅限非商业使用：本软件不得用于任何商业目的。您不得出售、出租、租赁本软件，也不得基于本软件收取任何费用。
-2. 必须保留版权声明：上述版权声明和本许可声明应包含在本软件的所有副本或主要部分中。您不得删除、更改或隐瞒原作者姓名及本许可声明。
-3. 本软件按“原样”提供，不附带任何形式的明示或暗示的担保，包括但不限于对适销性、特定用途适用性和不侵权的担保。在任何情况下，作者均不对任何索赔、损害或其他责任负责，无论是在合同诉讼、侵权诉讼还是其他诉讼中，由本软件或本软件的使用或其他交易引起或与之相关。
+第一部分：原创作品（由 Mr. Fu 独立制作）
+--------------------------------------------------------------------------------
+特此免费授予任何获得本原创作品（包括由 Mr. Fu 完全独立制作的插件与工具）副本的人不受限制地处理本原创作品的权利，包括但不限于使用、复制、修改、合并、发布和分发，但必须满足以下条件：
+1. 仅限非商业使用：您不得出售、出租、租赁本原创作品，也不得基于本原创作品收取任何费用。
+2. 必须保留署名：上述版权声明和本许可声明应包含在本原创作品的所有副本中。您不得删除或更改原作者姓名。
+3. 免责声明：本原创作品按“原样”提供，不附带任何形式的担保。作者不对任何损害承担责任。
+
+第二部分：第三方汉化作品（由 Mr. Fu 翻译及修改）
+--------------------------------------------------------------------------------
+1. 本仓库分发的汉化补丁或修改版，均基于第三方开源或免费软件制作。
+2. 原软件的著作权完全归属于其原作者。Mr. Fu 不主张对原软件的任何版权。
+3. 这些汉化作品的使用条件严格受限于原始项目的开源协议（Original Project's License）。若原作者不同意此类二次分发，一经联系，相关汉化资源将立即下线。
+
+严禁将本仓库分发的任何内容（无论是原创还是汉化）用于商业目的。
