@@ -7,7 +7,7 @@
 ---
 # 公开资产下载中心 (Public Asset Download Center)
 
-> 最后同步时间 (Last Sync Time): Sun Oct 18 15:47:46 UTC 2026
+> 最后同步时间 (Last Sync Time): Sun Oct 18 16:02:12 UTC 2026
 
 ### 💬 反馈与联系方式 (Feedback & Contact)
 
@@ -30,18 +30,18 @@
 - [OpenBurningSuite中文版](./OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/README.md)
 
 ---
-### 📜 原创作品与第三方汉化分发声明 (Declaration for Original Works & Third-Party Localizations)
+### 📜 版权与免责声明 (Copyright & Disclaimer)
 
 **【中文】**
-1. **声明效力范围（重要）**：**本通用声明中的授权限制、禁止商用条款及免责条款，仅适用于由作者（Mr. Fu）完全原创制作的插件与工具。**
-2. **原创作品版权**：对于 Mr. Fu 的原创作品，其著作权及相关权利归 Mr. Fu 所有。**严禁任何人将 Mr. Fu 的原创作品用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
-3. **第三方汉化作品说明**：本仓库分发的“汉化补丁”或“基于原版的修改版”，是基于第三方开源或免费软件制作的。**原软件的著作权、商标权及相关知识产权均完全归属于其原作者。**
-4. **汉化作品的效力剥离（免责）**：**本通用声明对第三方汉化作品无效。** 汉化作品的使用条件、版权归属、免责条款，**完全以其原始项目库的 `LICENSE` 或原作者的官方声明为准。** 若原作者认为本仓库的分发行为侵犯了其权益，请联系我（Mr. Fu），我将立即无条件下线。
-5. **综合免责条款**：所有资源（包括原创与汉化）均按“原样”提供。对于因下载、安装或使用本站任何资源而导致的任何数据丢失、系统损坏、法律纠纷或其他直接/间接损失，**作者（Mr. Fu）及本仓库不承担任何法律或连带责任**。请在使用前自行评估风险并做好数据备份。
+本仓库（Links-Hub）包含两类完全不同的资源，请仔细区分：
+
+1. **由 Mr. Fu 原创的插件/工具**：版权归 Mr. Fu 所有。**严禁任何形式的商业倒卖、租赁或售卖**。转载或分享时必须保留原作者署名。
+2. **由 Mr. Fu 汉化的第三方软件**：**原软件的版权完全归其原作者所有**。本仓库仅提供汉化补丁与修改版，使用条件与版权限制**完全以原始项目的 `LICENSE` 为准**。若原作者要求停止分发，我会立即无条件下线。
+3. **免责条款**：所有资源均按“原样”提供。对于下载、安装或使用本仓库资源导致的任何数据丢失、系统损坏或法律纠纷，作者（Mr. Fu）不承担任何责任。请自行做好备份。
 
 **【English】**
-1. **Scope of Declaration (Important)**: **The authorization restrictions, non-commercial clauses, and disclaimers in this general declaration apply ONLY to completely original plugins and tools created by Mr. Fu.**
-2. **Original Works Copyright**: For Mr. Fu's original works, the copyright and related rights belong to Mr. Fu. **Any commercial use (including but not limited to selling, renting, bundling, or reselling) of Mr. Fu's original works is strictly prohibited.**
-3. **Third-Party Localizations Notice**: The "localization patches" or "modified versions" distributed in this repository are based on third-party open-source or free software. **The copyright, trademark, and related intellectual property rights of the original software belong entirely to their respective original authors.**
-4. **Severability for Localizations (Disclaimer)**: **This general declaration DOES NOT APPLY to third-party localized works.** The terms of use, copyright attribution, and disclaimers for localized works **are strictly governed by the original project's `LICENSE` or the original author's official declaration.** If the original author believes this distribution infringes their rights, please contact me (Mr. Fu), and I will take it down unconditionally.
-5. **Comprehensive Disclaimer**: All resources (including original and localized) are provided "AS IS". **The author (Mr. Fu) and this repository are NOT liable for any data loss, system damage, legal disputes, or other direct/indirect damages** caused by downloading, installing, or using any resources here. Please evaluate risks and back up your data beforehand.
+This repository (Links-Hub) contains two distinct types of resources:
+
+1. **Original plugins/tools by Mr. Fu**: Copyright belongs to Mr. Fu. **Any commercial reselling or renting is strictly prohibited.** Credits must be retained when redistributed.
+2. **Third-party localizations by Mr. Fu**: **Copyright of the original software belongs entirely to its original authors.** Usage terms are strictly governed by the **original project's `LICENSE`**. If the original author requests takedown, it will be removed immediately.
+3. **Disclaimer**: All resources are provided "AS IS". The author (Mr. Fu) is NOT liable for any data loss, system damage, or legal disputes caused by using these resources. Please back up your data.
