@@ -2,16 +2,16 @@
 > [!TIP]
 > ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
 > 
-> 这里是所有插件的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
-> *(This is the official distribution channel for all plugins. All files are hosted on Cloudflare R2 for extreme download speed.)*
+> 这里是所有插件、汉化包及其他资源的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
+> *(This is the official distribution channel for all plugins, localizations, and other resources. All files are hosted on Cloudflare R2 for extreme download speed.)*
 ---
 
 # OpenBurningSuite中文版 下载列表 (Download List)
 
-> 最后同步时间 (Last Sync Time): Sun Oct 18 07:51:05 UTC 2026
+> 最后同步时间 (Last Sync Time): Sun Oct 18 10:22:05 UTC 2026
 
 
-| 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
+| 资源名称 (Resource Name) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
 | :--- | :--- | :--- | :--- |
 | OpenBurningSuite中文版 | 1.0.0 | https://github-download.1253510.com/OpenBurningSuite中文版/1.0.0/OpenBurningSuite中文版.zip | **1.0.0**: OpenBurningSuite 简体中文汉化补丁。解压后覆盖至原版安装根目录即可（建议先备份原文件）。本汉化基于官方最新版制作，经过人工校对，拒绝机翻。如遇到漏翻、乱码或界面错位，请前往 GitHub 提交 Issue 反馈。 [EN] Simplified Chinese localization patch for OpenBurningSuite. Extract and overwrite into the original installation directory (backup first). Manually proofread, no machine translation. Report bugs via GitHub Issues. |
 
