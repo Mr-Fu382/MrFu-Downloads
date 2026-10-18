@@ -20,32 +20,24 @@ ANNOUNCEMENT_MD = """
 ---
 """
 
-# ================= 📜 资源分发与版权通用声明 =================
+# ================= 📜 原创作品与第三方汉化分发声明 =================
 LICENSE_DISCLAIMER_MD = """
 ---
-### 📜 资源分发与版权通用声明 (General Declaration for Distribution & Copyright)
+### 📜 原创作品与第三方汉化分发声明 (Declaration for Original Works & Third-Party Localizations)
 
 **【中文】**
-1. **内容类型与版权归属**：本仓库（Links-Hub）分发的资源类型多样，版权归属情况如下：
-   - **原创内容**：由作者（Mr. Fu）完全原创的插件与工具，其著作权归 Mr. Fu 所有。
-   - **汉化与修改版**：基于第三方开源/免费软件制作的汉化补丁，**原软件的著作权归其原作者所有**，Mr. Fu 不主张对原软件的任何版权。
-   - **合作/授权分发内容**：由 Mr. Fu 与第三方联合开发，或经原作者明确授权在本仓库进行分发的内容。此类内容的版权归原团队或合作双方共同所有。
-2. **署名权保护**：严禁任何人抹除、篡改本仓库内任何资源的作者署名、版权声明或合作标识。
-3. **停止分发条款**：如果任何原软件作者、合作方或权利所有人认为本仓库的分发行为侵犯了其权益，请联系我（Mr. Fu），我将立即无条件下线相关资源。
-4. **严禁商用**：无论资源属于上述何种类型，**严禁任何人将本仓库分发的资源用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
-5. **免责条款**：所有资源均按“原样”提供。对于因下载、安装或使用本站资源而导致的任何数据丢失、系统损坏、版权纠纷或其他直接/间接损失，**作者（Mr. Fu）、合作方及本仓库不承担任何法律或连带责任**。
-6. **项目专属声明优先原则**：**本声明为兜底通用条款。若某具体资源（插件/汉化包等）在其独立的项目源码库或压缩包内附带了具体的 `LICENSE` 或版权声明，则以该项目的专属声明为准。** 若存在冲突，以项目内声明为最高优先级。
+1. **声明效力范围（重要）**：**本通用声明中的授权限制、禁止商用条款及免责条款，仅适用于由作者（Mr. Fu）完全原创制作的插件与工具。**
+2. **原创作品版权**：对于 Mr. Fu 的原创作品，其著作权及相关权利归 Mr. Fu 所有。**严禁任何人将 Mr. Fu 的原创作品用于商业目的**（包括但不限于出售、租赁、捆绑销售、二次倒卖）。
+3. **第三方汉化作品说明**：本仓库分发的“汉化补丁”或“基于原版的修改版”，是基于第三方开源或免费软件制作的。**原软件的著作权、商标权及相关知识产权均完全归属于其原作者。**
+4. **汉化作品的效力剥离（免责）**：**本通用声明对第三方汉化作品无效。** 汉化作品的使用条件、版权归属、免责条款，**完全以其原始项目库的 `LICENSE` 或原作者的官方声明为准。** 若原作者认为本仓库的分发行为侵犯了其权益，请联系我（Mr. Fu），我将立即无条件下线。
+5. **综合免责条款**：所有资源（包括原创与汉化）均按“原样”提供。对于因下载、安装或使用本站任何资源而导致的任何数据丢失、系统损坏、法律纠纷或其他直接/间接损失，**作者（Mr. Fu）及本仓库不承担任何法律或连带责任**。请在使用前自行评估风险并做好数据备份。
 
 **【English】**
-1. **Content Types & Copyright Attribution**: Resources distributed in this repository (Links-Hub) fall into the following categories:
-   - **Original Content**: Copyright belongs to Mr. Fu.
-   - **Localizations & Mods**: **Copyright of the original software belongs to its respective original authors**. Mr. Fu claims no copyright over the original software.
-   - **Cooperative/Authorized Content**: Copyright belongs to the original team or both parties.
-2. **Attribution Protection**: Removing or tampering with author credits or cooperation marks is strictly prohibited.
-3. **Takedown Policy**: If any rights holder believes this distribution infringes their rights, please contact me, and I will take down the resources unconditionally.
-4. **Non-Commercial**: **Any commercial use of the resources distributed in this repository is strictly prohibited.**
-5. **Disclaimer**: All resources are provided "AS IS". **The author, partners, and this repository are NOT liable for any data loss or damages.**
-6. **Precedence of Project-Specific Licenses**: **This is a general fallback declaration. If a specific resource includes its own `LICENSE` or copyright notice in its source repository or package, that project-specific declaration shall prevail.** In case of any conflict, the project-level declaration takes precedence.
+1. **Scope of Declaration (Important)**: **The authorization restrictions, non-commercial clauses, and disclaimers in this general declaration apply ONLY to completely original plugins and tools created by Mr. Fu.**
+2. **Original Works Copyright**: For Mr. Fu's original works, the copyright and related rights belong to Mr. Fu. **Any commercial use (including but not limited to selling, renting, bundling, or reselling) of Mr. Fu's original works is strictly prohibited.**
+3. **Third-Party Localizations Notice**: The "localization patches" or "modified versions" distributed in this repository are based on third-party open-source or free software. **The copyright, trademark, and related intellectual property rights of the original software belong entirely to their respective original authors.**
+4. **Severability for Localizations (Disclaimer)**: **This general declaration DOES NOT APPLY to third-party localized works.** The terms of use, copyright attribution, and disclaimers for localized works **are strictly governed by the original project's `LICENSE` or the original author's official declaration.** If the original author believes this distribution infringes their rights, please contact me (Mr. Fu), and I will take it down unconditionally.
+5. **Comprehensive Disclaimer**: All resources (including original and localized) are provided "AS IS". **The author (Mr. Fu) and this repository are NOT liable for any data loss, system damage, legal disputes, or other direct/indirect damages** caused by downloading, installing, or using any resources here. Please evaluate risks and back up your data beforehand.
 """
 # ==================================================================
 
