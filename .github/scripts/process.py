@@ -10,13 +10,13 @@ CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
 CONTACT_EMAIL = "3628270735@qq.com"
 
-# 置顶的欢迎公告
+# ================= 📢 置顶欢迎公告 =================
 ANNOUNCEMENT_MD = """
 > [!TIP]
 > ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
 > 
-> 这里是所有插件、汉化包及其他资源的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
-> *(This is the official distribution channel for all plugins, localizations, and other resources. All files are hosted on Cloudflare R2 for extreme download speed.)*
+> 这里是本项目的**官方展示与核心分发中心**。为了保证极致的下载速度，所有大文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。此外，部分插件也会同步发布至 npm、GitHub Releases 等其他平台，请根据您的网络环境自由选择。
+> *(This is the **official showcase and core distribution center** for this project. For extreme download speeds, all large files are hosted on **Cloudflare R2 (Global CDN)**. Additionally, some plugins are also distributed via platforms like npm and GitHub Releases. Please choose based on your network environment.)*
 ---
 """
 
@@ -41,18 +41,15 @@ LICENSE_DISCLAIMER_MD = """
 """
 # ==================================================================
 
-# 支持的可执行包后缀
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
     '.dmg', '.msi', '.exe', '.gtz', '.pak', '.arc', '.arj', '.lzh', '.cpio'
 )
 
-# 忽略的系统垃圾文件
 IGNORE_FILES = ['.DS_Store', 'Thumbs.db', 'desktop.ini']
 
 def generate_contact_md():
-    """生成联系方式模块"""
     return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
 **遇到问题？需要帮助？ (Need help?)**
@@ -98,7 +95,6 @@ def main():
             proj_encoded = quote(proj)
             f.write(f"- [{proj}](./{proj_encoded}/README.md)\n")
         
-        # 首页底部加上通用声明
         f.write(LICENSE_DISCLAIMER_MD)
             
     print("✅ 根目录导航 README.md 已更新。")
@@ -107,7 +103,6 @@ def main():
     for proj_name, proj_files in projects.items():
         print(f"正在处理分类: {proj_name}")
         
-        # 数据结构：{ '资源名': { '版本号': { 'files': [ (文件名, 路径), ... ], 'desc': '说明' } } }
         asset_data = defaultdict(lambda: defaultdict(lambda: {'files': [], 'desc': ''}))
 
         for file_path in proj_files:
@@ -119,7 +114,6 @@ def main():
             parts = file_path.split("/")
             path_len = len(parts)
             
-            # 智能层级解析引擎
             if path_len >= 3:
                 version = parts[-2]
                 if path_len > 3:
@@ -132,7 +126,6 @@ def main():
             else:
                 continue
 
-            # 识别压缩包并读取 txt 说明
             if filename.lower().endswith(ARCHIVE_EXTS):
                 asset_data[asset_name][version]['files'].append((filename, file_path))
             else:
@@ -149,7 +142,6 @@ def main():
                 except Exception:
                     pass
 
-        # 组装 Markdown 表格
         md_lines = []
         md_lines.append(ANNOUNCEMENT_MD)
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
@@ -197,7 +189,6 @@ def main():
             row = f"| {asset_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 子页面：联系方式 + 通用声明
         md_lines.append("\n---\n")
         md_lines.append(generate_contact_md())
         md_lines.append(LICENSE_DISCLAIMER_MD)
