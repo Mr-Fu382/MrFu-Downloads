@@ -1,20 +1,14 @@
 
-> [!WARNING]
-> ### 📢 关于安装渠道调整的致歉与说明 (Apology and Notice Regarding Installation Channel Adjustment)
+> [!TIP]
+> ### 🌟 欢迎来到公开资产下载中心 (Welcome to the Download Center)
 > 
-> 由于我的 **npm 账号意外丢失且暂时无法找回**，导致原计划通过 npm 分发的渠道被迫中断。
-> *(Due to the unexpected loss of my npm account and temporary inability to recover it, the npm distribution channel has been interrupted.)*
-> 
-> **目前本仓库仅发布了 `dsh-av-continuous` 这一款插件**，其他正在开发中的插件均尚未发布。因此，暂时**仅支持通过 GitHub 超链接从 R2 直接下载** `.gtz` 文件。
-> *(Currently, only `dsh-av-continuous` has been released. Other plugins are under development and not yet published. Therefore, it only supports direct download of `.gtz` files from R2 via GitHub hyperlinks for now.)*
-> 
-> R2 直链配备了全球 CDN 加速，下载速度极快。给大家带来的不便，我深表歉意！🙇‍♂️
-> *(The R2 direct link features global CDN acceleration for extremely fast downloads. I sincerely apologize for any inconvenience caused!)*
+> 这里是所有插件的官方唯一分发渠道。为了保证极致的下载速度，所有文件均托管于 **Cloudflare R2 (全球 CDN 加速)**。
+> *(This is the official distribution channel for all plugins. All files are hosted on Cloudflare R2 for extreme download speed.)*
 ---
 
 # DSH插件 下载列表 (Download List)
 
-> 最后同步时间 (Last Sync Time): Sun Oct 18 06:40:58 UTC 2026
+> 最后同步时间 (Last Sync Time): Sun Oct 18 07:51:01 UTC 2026
 
 
 | 插件名称 (Plugin) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
@@ -35,4 +29,3 @@
 - 📧 **邮箱 (Email)**: `3628270735@qq.com`
 
 > *提示 (Note)：加好友请备注来意。如遇 Bug，请尽量详细描述问题现象或附带截图。*
-> *(Please state your purpose when adding. For bugs, describe the issue in detail or attach screenshots.)*
