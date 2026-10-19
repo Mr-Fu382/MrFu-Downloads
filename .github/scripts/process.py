@@ -5,7 +5,7 @@ from collections import defaultdict
 # ================= ⚠️ 基础配置区 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
 # 如果你改了仓库名字，记得把这里的 links-hub 替换掉
-GITHUB_REPO_URL = "https://github.com/Mr-Fu382/links-hub"
+GITHUB_REPO_URL = "https://github.com/Mr-Fu382/MrFu-Downloads"
 
 CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
