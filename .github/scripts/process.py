@@ -4,7 +4,6 @@ from collections import defaultdict
 
 # ================= ⚠️ 基础配置区 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
-# 如果你改了仓库名字，记得把这里的 links-hub 替换掉
 GITHUB_REPO_URL = "https://github.com/Mr-Fu382/links-hub"
 
 CONTACT_WECHAT = "15976948117; Yq13926922459"
@@ -121,7 +120,6 @@ def main():
             parts = file_path.split("/")
             path_len = len(parts)
             
-            # 智能层级解析引擎
             if path_len >= 3:
                 version = parts[-2]
                 if path_len > 3:
@@ -174,14 +172,13 @@ def main():
                         encoded_path = quote(fpath)
                         full_url = f"{BASE_DOWNLOAD_URL}{encoded_path}"
                         
-                        # 核心修改：完全显示文件名，不再截断！
+                        # 核心修改：直接使用原始 fname 作为链接显示文字
                         if len(info['files']) > 1:
-                            # 多个文件时，直接显示完整文件名作为链接
                             v_links.append(f"[{fname}]({full_url})")
                         else:
-                            # 单文件时，为了表格美观，依然显示版本号作为链接
-                            v_links.append(f"[{v}]({full_url})")
+                            v_links.append(f"[点击下载]({full_url})")
                     
+                    # 强制换行
                     if len(sorted_versions) > 1:
                         download_list.append(f"**{v}**:<br>" + "<br>".join(v_links))
                     else:
@@ -194,7 +191,7 @@ def main():
                 else:
                     desc_list.append("-")
 
-            download_joined = " <br><br> ".join(download_list)
+            download_joined = "<br><br>".join(download_list)
             desc_joined = " <br> ".join(desc_list)
             
             row = f"| {asset_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
