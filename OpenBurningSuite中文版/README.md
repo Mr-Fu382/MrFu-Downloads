@@ -10,20 +10,20 @@
 
 # OpenBurningSuite中文版 下载列表 (Download List)
 
-> 最后同步时间 (Last Sync Time): Mon Oct 19 22:42:48 UTC 2026
+> 最后同步时间 (Last Sync Time): Mon Oct 19 22:46:23 UTC 2026
 
 
 | 资源名称 (Resource) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
 | :--- | :--- | :--- | :--- |
-| OpenBurningSuite中文版 | 1.0.0 | [OpenBurningSuite-Chine...](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-Chinese-%E7%8B%AC%E7%AB%8B%E7%89%88-%E8%87%AA%E5%B8%A6%20.NET%208.zip)<br>[OpenBurningSuite-Chine...](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-Chinese-%E9%9C%80%E8%A6%81%20.NET%208%20Desktop%20Runtime.zip)<br>[OpenBurningSuite-汉化版-独...](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-%E6%B1%89%E5%8C%96%E7%89%88-%E7%8B%AC%E7%AB%8B%E7%89%88-%E8%87%AA%E5%B8%A6%20.NET%208.exe)<br>[OpenBurningSuite-汉化版-需...](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-%E6%B1%89%E5%8C%96%E7%89%88-%E9%9C%80%E8%A6%81%20.NET%208%20Desktop%20Runtime.exe) | **1.0.0**: OpenBurningSuite 简体中文汉化补丁。解压后覆盖至原版安装根目录即可（建议先备份原文件）。本汉化基于官方最新版制作，经过人工校对，拒绝机翻。如遇到漏翻、乱码或界面错位，请前往 GitHub 提交 Issue 反馈。 [EN] Simplified Chinese localization patch for OpenBurningSuite. Extract and overwrite into the original installation directory (backup first). Manually proofread, no machine translatio... |
+| OpenBurningSuite中文版 | 1.0.0 | [OpenBurningSuite-Chinese-独立版-自带 .NET 8.zip](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-Chinese-%E7%8B%AC%E7%AB%8B%E7%89%88-%E8%87%AA%E5%B8%A6%20.NET%208.zip)<br>[OpenBurningSuite-Chinese-需要 .NET 8 Desktop Runtime.zip](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-Chinese-%E9%9C%80%E8%A6%81%20.NET%208%20Desktop%20Runtime.zip)<br>[OpenBurningSuite-汉化版-独立版-自带 .NET 8.exe](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-%E6%B1%89%E5%8C%96%E7%89%88-%E7%8B%AC%E7%AB%8B%E7%89%88-%E8%87%AA%E5%B8%A6%20.NET%208.exe)<br>[OpenBurningSuite-汉化版-需要 .NET 8 Desktop Runtime.exe](https://github-download.1253510.com/OpenBurningSuite%E4%B8%AD%E6%96%87%E7%89%88/1.0.0/OpenBurningSuite-%E6%B1%89%E5%8C%96%E7%89%88-%E9%9C%80%E8%A6%81%20.NET%208%20Desktop%20Runtime.exe) | **1.0.0**: OpenBurningSuite 简体中文汉化补丁。解压后覆盖至原版安装根目录即可（建议先备份原文件）。本汉化基于官方最新版制作，经过人工校对，拒绝机翻。如遇到漏翻、乱码或界面错位，请前往 GitHub 提交 Issue 反馈。 [EN] Simplified Chinese localization patch for OpenBurningSuite. Extract and overwrite into the original installation directory (backup first). Manually proofread, no machine translatio... |
 
 ---
 
 ### 💬 反馈与联系方式 (Feedback & Contact)
 
 **遇到问题？需要帮助？ (Need help?)**
-- 🐞 **提交工单 (Submit Issue)**: [点击前往 GitHub 议题 (Issues)](https://github.com/Mr-Fu382/MrFu-Downloads/issues) *(推荐，方便追踪 / Recommended)*
-- 💡 **交流讨论 (Discussions)**: [点击前往 GitHub 讨论 (Discussions)](https://github.com/Mr-Fu382/MrFu-Downloads/discussions) *(分享心得 / Share ideas)*
+- 🐞 **提交工单 (Submit Issue)**: [点击前往 GitHub 议题 (Issues)](https://github.com/Mr-Fu382/links-hub/issues) *(推荐，方便追踪 / Recommended)*
+- 💡 **交流讨论 (Discussions)**: [点击前往 GitHub 讨论 (Discussions)](https://github.com/Mr-Fu382/links-hub/discussions) *(分享心得 / Share ideas)*
 
 **直接联系作者 (Contact Author)：**
 - 💬 **微信 (WeChat)**: `15976948117; Yq13926922459`
