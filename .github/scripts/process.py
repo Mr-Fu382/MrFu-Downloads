@@ -5,7 +5,7 @@ from collections import defaultdict
 # ================= ⚠️ 基础配置区 =================
 BASE_DOWNLOAD_URL = "https://github-download.1253510.com/"
 # 如果你改了仓库名字，记得把这里的 links-hub 替换掉
-GITHUB_REPO_URL = "https://github.com/Mr-Fu382/MrFu-Downloads"
+GITHUB_REPO_URL = "https://github.com/Mr-Fu382/links-hub"
 
 CONTACT_WECHAT = "15976948117; Yq13926922459"
 CONTACT_QQ = "3628270735"
@@ -48,18 +48,15 @@ Resources distributed in this repository (Mr. Fu's Asset Hub) and its associated
 """
 # ==================================================================
 
-# 支持的可执行包后缀（全覆盖）
 ARCHIVE_EXTS = (
     '.zip', '.7z', '.rar', '.tar', '.gz', '.tgz', '.bz2', '.tbz2', '.xz', '.txz',
     '.zst', '.lz', '.lzma', '.cab', '.iso', '.img', '.wim', '.esd', '.swm', 
     '.dmg', '.msi', '.exe', '.gtz', '.pak', '.arc', '.arj', '.lzh', '.cpio'
 )
 
-# 忽略的系统垃圾文件
 IGNORE_FILES = ['.DS_Store', 'Thumbs.db', 'desktop.ini']
 
 def generate_contact_md():
-    """生成联系方式模块"""
     return f"""### 💬 反馈与联系方式 (Feedback & Contact)
 
 **遇到问题？需要帮助？ (Need help?)**
@@ -86,7 +83,6 @@ def main():
         print("R2 中暂无文件，退出。")
         return
 
-    # 按第一层目录（大类）分组
     projects = defaultdict(list)
     for file in files:
         parts = file.split("/")
@@ -114,7 +110,6 @@ def main():
     for proj_name, proj_files in projects.items():
         print(f"正在处理分类: {proj_name}")
         
-        # 数据结构：{ '资源名': { '版本号': { 'files': [ (文件名, 路径), ... ], 'desc': '说明' } } }
         asset_data = defaultdict(lambda: defaultdict(lambda: {'files': [], 'desc': ''}))
 
         for file_path in proj_files:
@@ -126,7 +121,7 @@ def main():
             parts = file_path.split("/")
             path_len = len(parts)
             
-            # ----- 🧠 智能层级解析引擎 -----
+            # 智能层级解析引擎
             if path_len >= 3:
                 version = parts[-2]
                 if path_len > 3:
@@ -139,7 +134,6 @@ def main():
             else:
                 continue
 
-            # ----- 📦 文件类型识别与读取说明 -----
             if filename.lower().endswith(ARCHIVE_EXTS):
                 asset_data[asset_name][version]['files'].append((filename, file_path))
             else:
@@ -156,7 +150,6 @@ def main():
                 except Exception:
                     pass
 
-        # ----- 📝 组装 Markdown 表格 -----
         md_lines = []
         md_lines.append(ANNOUNCEMENT_MD)
         md_lines.append(f"# {proj_name} 下载列表 (Download List)\n")
@@ -181,11 +174,12 @@ def main():
                         encoded_path = quote(fpath)
                         full_url = f"{BASE_DOWNLOAD_URL}{encoded_path}"
                         
-                        # 如果同版本有多个文件，用文件名区分并换行；单文件直接显示版本号
+                        # 核心修改：完全显示文件名，不再截断！
                         if len(info['files']) > 1:
-                            short_name = fname if len(fname) <= 25 else fname[:22] + "..."
-                            v_links.append(f"[{short_name}]({full_url})")
+                            # 多个文件时，直接显示完整文件名作为链接
+                            v_links.append(f"[{fname}]({full_url})")
                         else:
+                            # 单文件时，为了表格美观，依然显示版本号作为链接
                             v_links.append(f"[{v}]({full_url})")
                     
                     if len(sorted_versions) > 1:
@@ -206,12 +200,10 @@ def main():
             row = f"| {asset_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
             md_lines.append(row)
 
-        # 底部信息 + 协议
         md_lines.append("\n---\n")
         md_lines.append(generate_contact_md())
         md_lines.append(LICENSE_DISCLAIMER_MD)
 
-        # 写入文件
         os.makedirs(proj_name, exist_ok=True)
         with open(f"{proj_name}/README.md", "w", encoding="utf-8") as f:
             f.write("\n".join(md_lines))
