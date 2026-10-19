@@ -24,8 +24,8 @@
 **本汉化版由初中生开发者 Mr. Fu 独立编译制作，托管于 Cloudflare R2 全球极速 CDN。**
 
 > [!IMPORTANT]  
-> **如果下方的直链点击没反应、或者下载速度极慢，请立刻点击下方备用通道！**
-> 👉 **[前往 Mr. Fu 官方下载中心获取备用链接 (Backup Download Center)](https://github.com/Mr-Fu382/links-hub)**
+> **如果下方的直链点击没反应、或者下载速度极慢，请立刻点击备用通道！**
+> 👉 **[前往本作者的专属下载中心获取备用链接 (Backup Download Center)](https://github.com/Mr-Fu382/links-hub)**
 
 为了方便不同需求的用户，提供了以下两种环境的四个版本，请根据需要选择：
 
@@ -36,7 +36,7 @@
 | 🍃 **免安装绿色版 (依赖版)**<br>*(需自备 .NET 8)* | 追求小体积，且电脑已装运行库的用户。 | [📦 下载 ZIP](https://github-download.1253510.com/OpenBurningSuite中文版/1.0.0/OpenBurningSuite-Chinese-需要%20.NET%208%20Desktop%20Runtime.zip) |
 | ⚙️ **安装程序版 (依赖版)**<br>*(需自备 .NET 8)* | 体积最小，但未装运行库会报错。 | [⬇️ 下载 EXE](https://github-download.1253510.com/OpenBurningSuite中文版/1.0.0/OpenBurningSuite-汉化版-需要%20.NET%208%20Desktop%20Runtime.exe) |
 
-> **⚠️ 运行提示：** 如果你下载的版本提示缺少 `.NET`，请前往微软官网下载安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0)。如遇问题，欢迎前往 [项目分发中心](https://github.com/Mr-Fu382/links-hub) 提交反馈。
+> **⚠️ 运行提示：** 如果你下载的版本提示缺少 `.NET`，请前往微软官网下载安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/zh-cn/download/dotnet/8.0)。如遇问题，欢迎前往 **[本作者的专属宝库 (Mr. Fu's Asset Hub)](https://github.com/Mr-Fu382/links-hub)** 提交反馈。
 
 ---
 
