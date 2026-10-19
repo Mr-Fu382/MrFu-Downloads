@@ -167,22 +167,22 @@ def main():
                 version_list.append(v)
                 
                 if info['files']:
+                    # 🎯 终极排版方案：使用 HTML 无序列表 <ul><li>，强制单元格内分行
                     v_links = []
                     for fname, fpath in info['files']:
                         encoded_path = quote(fpath)
                         full_url = f"{BASE_DOWNLOAD_URL}{encoded_path}"
                         
-                        # 核心修改：直接使用原始 fname 作为链接显示文字
-                        if len(info['files']) > 1:
-                            v_links.append(f"[{fname}]({full_url})")
-                        else:
-                            v_links.append(f"[点击下载]({full_url})")
+                        # 必须使用完整的原始文件名，用 HTML 的 a 标签包裹
+                        v_links.append(f'<li><a href="{full_url}">{fname}</a></li>')
                     
-                    # 强制换行
                     if len(sorted_versions) > 1:
-                        download_list.append(f"**{v}**:<br>" + "<br>".join(v_links))
+                        # 将列表渲染在版本号下方
+                        html_list = "<ul>" + "".join(v_links) + "</ul>"
+                        download_list.append(f"**{v}**:{html_list}")
                     else:
-                        download_list.append("<br>".join(v_links))
+                        html_list = "<ul>" + "".join(v_links) + "</ul>"
+                        download_list.append(html_list)
                 else:
                     download_list.append("-")
                     
@@ -191,7 +191,8 @@ def main():
                 else:
                     desc_list.append("-")
 
-            download_joined = "<br><br>".join(download_list)
+            # 因为内部已经是 <ul><li> 列表了，版本之间用 <br> 隔开就行
+            download_joined = "<br>".join(download_list)
             desc_joined = " <br> ".join(desc_list)
             
             row = f"| {asset_name} | {', '.join(version_list)} | {download_joined} | {desc_joined} |"
