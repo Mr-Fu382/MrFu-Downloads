@@ -10,7 +10,7 @@
 
 # OpenBurningSuite中文版 下载列表 (Download List)
 
-> 最后同步时间 (Last Sync Time): Wed Nov 11 11:30:06 UTC 2026
+> 最后同步时间 (Last Sync Time): Wed Nov 11 18:55:12 UTC 2026
 
 
 | 资源名称 (Resource) | 版本 (Version) | 下载链接 (Download) | 说明 (Description) |
